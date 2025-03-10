@@ -8,13 +8,13 @@ public static void main(String[] args) {
 
     List<Employee> employeeList = new ArrayList<Employee>();
 
-    employeeList.add(new Employee(111, "Ravikumar", 28, "Male", "Java Developer", 2023, 25000.0));
+    employeeList.add(new Employee(111, "Ravikumar", 28, "Male", "Java Developer", 2023, 65000.0));
     employeeList.add(new Employee(122, "Aruna", 25, "Female", "FrontEnd UI", 2022, 35000));
     employeeList.add(new Employee(122, "Sunitha", 25, "Female", "FrontEnd", 2021, 28000));
     employeeList.add(new Employee(133, "Rajeswari", 32, "Female", "FullStack Developer Lead", 2024, 158000.0));
     employeeList.add(new Employee(144, "Karthik", 28, "Male", "Java Developer", 2024, 32500.0));
     employeeList.add(new Employee(155, "Renuka", 27, "Female", "Java Developer", 2021, 22700.0));
-    employeeList.add(new Employee(166, "Gokul", 43, "Male", "FullStack Developer Lead", 2022, 10500.0));
+    employeeList.add(new Employee(166, "Gokul", 43, "Male", "FullStack Developer Lead", 2022, 55500.0));
     employeeList.add(new Employee(177, "RamMohan", 35, "Male", "Java Developer", 2023, 27000.0));
     employeeList.add(new Employee(188, "Keerthi", 31, "Male", "Java Development", 2024, 34500.0));
     employeeList.add(new Employee(199, "Jayasree", 24, "Female", "Java Developer", 2022, 11500.0));
@@ -243,5 +243,45 @@ public static void main(String[] args) {
     System.out.println("Age : "+oldestEmployee.getAge());
 
     System.out.println("Department : "+oldestEmployee.getDepartment());
-}
+
+    //find the Highest salary from the Employee 
+    System.out.println("find the Highest salary from the Employee.....?");
+    Optional<Double> highestSal = employeeList.stream()
+            .map(Employee::getSalary)
+            .distinct()
+            .sorted(Comparator.reverseOrder())
+            .findFirst();
+            System.out.println(highestSal);
+
+    //find the second-highest salary from the Employee cpg-sankar
+    System.out.println("find the second-highest salary from the Employee.....?");
+    Optional<Double> secondHighSal = employeeList.stream()
+            .map(Employee::getSalary)
+            .distinct()
+            .sorted(Comparator.reverseOrder())
+            .skip(1)
+            .findFirst();
+            System.out.println(secondHighSal);
+
+    //find the smallestSal salary from the Employee 
+    System.out.println("find the smallestSal salary from the Employee.....?");
+    Optional<Double> smallestSal = employeeList.stream()
+            .map(Employee::getSalary)
+            .distinct()
+            .sorted()
+            .findFirst();
+            System.out.println(smallestSal);
+
+    //find the secondSamllestSal salary from the Employee 
+  System.out.println("find the smallestSal salary from the Employee.....?");
+  Optional<Double> secondSamllestSal = employeeList.stream()
+        .map(Employee::getSalary)
+        .distinct()
+        .sorted()
+        .skip(1)
+        .findFirst();
+        System.out.println(secondSamllestSal);
+
+
+   }
 }
